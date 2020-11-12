@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cd dssat-install
+. /usr/local/bin/flowvr-config.sh
+
+
+flowvrd --top &
+sleep 2
+
+python CSM.py
+flowvr csm
