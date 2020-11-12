@@ -7,5 +7,5 @@ cd dssat-install
 flowvrd --top &
 sleep 2
 
-python CSM.py
+python3 CSM.py
 flowvr csm
