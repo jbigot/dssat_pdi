@@ -13,11 +13,11 @@ RUN ls -l && \
     make install
 RUN cp Coupling/* /dssat-install
 
-
 FROM pdidevel/xenial_pdi
 USER 0
 COPY --from=builder /dssat-install /dssat-install
-
+COPY dssat-csm-data/ /dssat-install/
+COPY dssat-csm-data/Maize/UFGA8201.MZX /dssat-install
 COPY dssat-run.sh /dssat-install
 WORKDIR /dssat-install
 
