@@ -6,7 +6,6 @@ Clone this repository with recursive flag and change dssat branch:
 
 ```bash
 git clone --recursive https://github.com/jbigot/dssat_pdi.git
-cd dssat-csm-os && git checkout develop-bis && cd ..
 ```
 
 To build Dokcer image:
