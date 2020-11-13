@@ -18,7 +18,7 @@ FROM pdidevel/xenial_pdi
 USER 0
 COPY --from=builder /dssat-install /dssat-install
 
-COPY dssat-run /dssat-install
+COPY dssat-run.sh /dssat-install
 WORKDIR /dssat-install
 
-CMD pdirun bash -x dssat-run
+CMD pdirun bash -x dssat-run.sh
