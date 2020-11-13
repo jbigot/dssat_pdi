@@ -1,10 +1,8 @@
 #!/bin/bash
 
-cd dssat-install
 . /usr/local/bin/flowvr-config.sh
 
-
-flowvrd --top &
+flowvrd &
 sleep 2
 
 python3 CSM.py

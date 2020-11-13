@@ -5,18 +5,20 @@ USER 0
 RUN apt-get update -y
 RUN apt-get install -y git python3-numpy
 
-USER 1001
+COPY dssat-csm-os .
+RUN ls -l && \
+    mkdir build && \
+    cd build && \
+    cmake -DCMAKE_BUILD_TYPE="DEBUG" -DCMAKE_INSTALL_PREFIX=/dssat-install .. && \
+    make install
+RUN cp Coupling/* /dssat-install
 
-COPY dssat-csm-os*.tar.bz2 .
-RUN tar -xf dssat-csm-os*.tar.bz2
-RUN rm *.tar.bz2
-RUN mkdir build
-RUN cd build && cmake -DCMAKE_BUILD_TYPE="DEBUG" -DCMAKE_INSTALL_PREFIX=~/dssat-install ../dssat-csm-os*
-RUN cd build && make -j install
-RUN cp -R dssat-csm-os*/Coupling/* dssat-install
-COPY dssat-run dssat-install
 
-#FROM pdidevel/xenial_pdi
-#COPY --from=builder ${HOME}/dssat-install ${HOME}/dssat-install
+FROM pdidevel/xenial_pdi
+USER 0
+COPY --from=builder /dssat-install /dssat-install
 
-RUN cd dssat-install && pdirun bash -x dssat-run
+COPY dssat-run.sh /dssat-install
+WORKDIR /dssat-install
+
+CMD pdirun bash -x dssat-run.sh
