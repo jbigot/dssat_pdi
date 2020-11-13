@@ -8,7 +8,7 @@ Clone this repository with recursive flag and change dssat branch:
 git clone --recursive https://github.com/jbigot/dssat_pdi.git
 ```
 
-To build Dokcer image:
+To build Docker image:
 
 ```bash
 docker build -t dssat_coupling .
