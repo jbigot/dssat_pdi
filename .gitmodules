@@ -1,6 +1,7 @@
 [submodule "dssat-csm-os"]
 	path = dssat-csm-os
 	url = https://gitlab.inria.fr/rgautron/dssat-csm-os.git
+	branch = test
 
 [submodule "dssat-csm-data"]
 	path = dssat-csm-data
